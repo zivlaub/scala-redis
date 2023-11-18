@@ -1,0 +1,1 @@
+libraryDependencies += "com.github.etaty" %% "rediscala" % "1.9.0"
