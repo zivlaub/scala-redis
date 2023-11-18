@@ -39,17 +39,17 @@ object HelloWorld {
     
     var ITERRATIONS = 10000
     
-    var PARALLEL = 5
+    var PARALLEL = 50
    
     for (i <- 1 to ITERRATIONS) {
         val tasks: Seq[Future[Unit]] = (1 to PARALLEL).map(task(_, redis))
         val allTasks: Future[Seq[Unit]] = Future.sequence(tasks)
         
         // Use Await.result to block and wait for all tasks to complete
-        // Adjust the timeout according to the expected completion time of tasks
-        val result: Seq[Unit] = Await.result(allTasks, 10.seconds)
-        Thread.sleep(200)
-        println(s"Element: $i")
+        // Adjust the tieout according to the expected completion time of tasks
+        val result: Seq[Unit] = Await.result(allTasks, 60.seconds)
+        Thread.sleep(50)
+        println(s"Batch: $i")
     }
     ///
     // Additional logic after all tasks have completed
@@ -88,7 +88,7 @@ object HelloWorld {
       iBefore <- redis.get("my_key")
     } yield {
       val ibefore = iBefore.map(_.utf8String)
-      println(s"my_key is $ibefore")
+      //println(s"my_key is $ibefore")
       ibefore == "1"
     }
   }
@@ -97,7 +97,7 @@ object HelloWorld {
     
     //val result = redis.ping()
     val futureResult = read_loop(redis)
-    Await.result(futureResult, 5 seconds)
+    Await.result(futureResult, 60 seconds)
     //println(s"Task $taskId completed. $futureResult")
   }
   

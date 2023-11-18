@@ -1,0 +1,17 @@
+Batch: 1484
+[WARN] [11/18/2023 19:09:14.756] [default-rediscala.rediscala-client-worker-dispatcher-10] [akka://default/user/RedisClient-$a] ConnectionClosed PeerClosed
+[INFO] [11/18/2023 19:09:14.759] [default-rediscala.rediscala-client-worker-dispatcher-10] [akka://default/user/RedisClient-$a] Trying to reconnect in 2 seconds
+Batch: 1485
+[INFO] [11/18/2023 19:09:16.776] [default-rediscala.rediscala-client-worker-dispatcher-6] [akka://default/user/RedisClient-$a] Connect to redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com/172.31.41.216:6379
+[INFO] [11/18/2023 19:09:16.780] [default-rediscala.rediscala-client-worker-dispatcher-6] [akka://default/user/RedisClient-$a] Connected to redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com/172.31.92.109:6379
+Batch: 1486
+
+
+Failed recovery
+
+Batch: 3159
+[WARN] [11/18/2023 19:12:06.232] [default-rediscala.rediscala-client-worker-dispatcher-8] [akka://default/user/RedisClient-$a] ConnectionClosed PeerClosed
+[INFO] [11/18/2023 19:12:06.233] [default-rediscala.rediscala-client-worker-dispatcher-8] [akka://default/user/RedisClient-$a] Trying to reconnect in 2 seconds
+Batch: 3160
+[INFO] [11/18/2023 19:12:08.253] [default-rediscala.rediscala-client-worker-dispatcher-9] [akka://default/user/RedisClient-$a] Connect to redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com/172.31.92.109:6379
+[error] java.util.concurrent.TimeoutException: Futures timed out after [5 seconds]
