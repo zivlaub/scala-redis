@@ -1,5 +1,29 @@
+# SBT specific
+target/
+lib_managed/
+project/project
+project/target
+.history
+
+# IDE specific
+.idea
+*.iml
+*.ipr
+*.iws
+*.classpath
+*.project
+*.settings/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Compiled bytecode
 *.class
+
+# Logs
 *.log
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# OS-specific files
+.DS_Store
+Thumbs.db
