@@ -10,10 +10,19 @@ object HelloWorld {
     println("Hello, Scala!")
 
     implicit val akkaSystem = akka.actor.ActorSystem()
-    val host = "redis-test-2.8grenv.ng.0001.use1.cache.amazonaws.com"
-    val redis = RedisClient(host)
-    val s = redis.set("my_key", 1)
-    Await.result(s, 5 seconds)
+    val primaryEndpoint = "redis-test-2.8grenv.ng.0001.use1.cache.amazonaws.com"
+    var readerEndpoint  = "redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com"
+    val redis = RedisClient(readerEndpoint)
+    // val infoFuture: Future[String] = redis.info()
+    // infoFuture.onComplete {
+    //     case scala.util.Success(info) =>
+    //         println(info)
+    //     case scala.util.Failure(exception) =>
+    //         println(s"Failed to retrieve Redis info: $exception")
+    // }
+    // Await.result(infoFuture, 5 seconds)
+    //val s = redis.set("my_key", 1)
+    //Await.result(s, 5 seconds)
     // val futurePong = redis.ping()
     // println("Ping sent!")
     // futurePong.map(pong => {
@@ -27,15 +36,22 @@ object HelloWorld {
  
     // Create a sequence of tasks to be executed in parallel
     //val tasks: Seq[Future[Unit]] = (1 to 5).map(task)
+    
+    var ITERRATIONS = 10000
+    
     var PARALLEL = 5
-    val tasks: Seq[Future[Unit]] = (1 to PARALLEL).map(task(_, redis))
-    // Use Future.sequence to execute tasks in parallel
-    val allTasks: Future[Seq[Unit]] = Future.sequence(tasks)
-  
-    // Use Await.result to block and wait for all tasks to complete
-    // Adjust the timeout according to the expected completion time of tasks
-    val result: Seq[Unit] = Await.result(allTasks, 10.seconds)
-  
+   
+    for (i <- 1 to ITERRATIONS) {
+        val tasks: Seq[Future[Unit]] = (1 to PARALLEL).map(task(_, redis))
+        val allTasks: Future[Seq[Unit]] = Future.sequence(tasks)
+        
+        // Use Await.result to block and wait for all tasks to complete
+        // Adjust the timeout according to the expected completion time of tasks
+        val result: Seq[Unit] = Await.result(allTasks, 10.seconds)
+        Thread.sleep(200)
+        println(s"Element: $i")
+    }
+    ///
     // Additional logic after all tasks have completed
     println("All tasks completed.")
     
