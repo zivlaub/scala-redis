@@ -12,7 +12,8 @@ object HelloWorld {
     implicit val akkaSystem = akka.actor.ActorSystem()
     val host = "redis-test-2.8grenv.ng.0001.use1.cache.amazonaws.com"
     val redis = RedisClient(host)
-
+    val s = redis.set("my_key", 1)
+    Await.result(s, 5 seconds)
     // val futurePong = redis.ping()
     // println("Ping sent!")
     // futurePong.map(pong => {
@@ -65,23 +66,23 @@ object HelloWorld {
   }
   
   def read_loop( redis: RedisClient) : Future[Boolean] = {
-    val s = redis.set("my_key_1", 1)
     
     for {
       //set <- s
-      iBefore <- redis.get("my_key_1")
+      iBefore <- redis.get("my_key")
     } yield {
       val ibefore = iBefore.map(_.utf8String)
-      println(s"my_key_1 is $ibefore")
+      println(s"my_key is $ibefore")
       ibefore == "1"
     }
   }
-    // Define a function to simulate some asynchronous task
+    
   def task(taskId: Int, redis: RedisClient): Future[Unit] = Future {
-    // Simulate some computation or asynchronous operation
-    val result = redis.ping()
-    Thread.sleep(100)
-    println(s"Task $taskId completed. $result")
+    
+    //val result = redis.ping()
+    val futureResult = read_loop(redis)
+    Await.result(futureResult, 5 seconds)
+    //println(s"Task $taskId completed. $futureResult")
   }
   
   

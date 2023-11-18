@@ -1,0 +1,8 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/ec2-user/environment/scala-redis/scala-redis/load-redis.scala:64:14: Option[String] and String are unrelated: they will most likely never compare equal[0m
+[0m[[0m[33mwarn[0m] [0m[0m      iafter == "20"[0m
+[0m[[0m[33mwarn[0m] [0m[0m             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/ec2-user/environment/scala-redis/scala-redis/load-redis.scala:77:15: Option[String] and String are unrelated: they will most likely never compare equal[0m
+[0m[[0m[33mwarn[0m] [0m[0m      ibefore == "1"[0m
+[0m[[0m[33mwarn[0m] [0m[0m              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0mthree warnings found[0m
