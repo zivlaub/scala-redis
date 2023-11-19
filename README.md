@@ -7,15 +7,20 @@ This sample code test redis client.
 
 Run the setup.sh script to install scala and sbt.
 
-### Change the readerEndpoint with your redis reader endpoint FQDN
-
+### Change the readerEndpoint to your redis reader endpoint FQDN
+```scala
 var readerEndpoint  = "redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com"
-   
+```
+
+
 
 ### Run the test
 
 >sbt
 sbt:scala-redis>compile
 sbt:scala-redis>run
+1. clone the repo `git clone git@github.com:zivlaub/scala-redis.git`
+2. run `sbt compile`
+3. run `sbt run`
 
 
