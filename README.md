@@ -21,7 +21,7 @@ var readerEndpoint  = "redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com"
 sbt:scala-redis>compile
 sbt:scala-redis>run
 1. clone the repo `git clone git@github.com:zivlaub/scala-redis.git`
-2. run 'source \"$HOME/.sdkman/bin/sdkman-init.sh\"'
+2. run 'source $HOME/.sdkman/bin/sdkman-init.sh'
 2. run `sbt compile`
 3. run `sbt run`
 
