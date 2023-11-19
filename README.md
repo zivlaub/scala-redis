@@ -1,7 +1,8 @@
 rediscala client test
 ======================
 
-This sample code test redis client.
+This sample code test scala redis client by initiaing load on redis.
+The test uses the https://github.com/etaty/rediscala client
 
 ### Set up your project dependencies
 
