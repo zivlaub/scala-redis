@@ -1,3 +1,28 @@
+Successful recovery 1:
+---------------------
+
+Hello, Scala!
+[INFO] [11/18/2023 19:19:10.691] [default-rediscala.rediscala-client-worker-dispatcher-7] [akka://default/user/RedisClient-$a] Connect to redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com/172.31.41.216:6379
+[INFO] [11/18/2023 19:19:10.740] [default-rediscala.rediscala-client-worker-dispatcher-7] [akka://default/user/RedisClient-$a] Connected to redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com/172.31.41.216:6379
+Batch: 1
+Batch: 2
+.
+.
+Batch: 550
+[WARN] [11/18/2023 19:20:07.022] [default-rediscala.rediscala-client-worker-dispatcher-8] [akka://default/user/RedisClient-$a] ConnectionClosed PeerClosed
+[INFO] [11/18/2023 19:20:07.027] [default-rediscala.rediscala-client-worker-dispatcher-8] [akka://default/user/RedisClient-$a] Trying to reconnect in 2 seconds
+Batch: 551
+[INFO] [11/18/2023 19:20:09.046] [default-rediscala.rediscala-client-worker-dispatcher-10] [akka://default/user/RedisClient-$a] Connect to redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com/172.31.41.216:6379
+[INFO] [11/18/2023 19:20:09.050] [default-rediscala.rediscala-client-worker-dispatcher-10] [akka://default/user/RedisClient-$a] Connected to redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com/172.31.92.109:6379
+Batch: 552
+Batch: 553
+.
+.
+---
+
+
+Successful recovery 2:
+---------------------
 Batch: 1484
 [WARN] [11/18/2023 19:09:14.756] [default-rediscala.rediscala-client-worker-dispatcher-10] [akka://default/user/RedisClient-$a] ConnectionClosed PeerClosed
 [INFO] [11/18/2023 19:09:14.759] [default-rediscala.rediscala-client-worker-dispatcher-10] [akka://default/user/RedisClient-$a] Trying to reconnect in 2 seconds
@@ -7,11 +32,43 @@ Batch: 1485
 Batch: 1486
 
 
-Failed recovery
+Failed recovery:
+----------------
+Batch: 1901
+Batch: 1902
+Batch: 1903
+Batch: 1904
+Batch: 1905
+[WARN] [11/19/2023 12:15:10.811] [default-rediscala.rediscala-client-worker-dispatcher-14] [akka://default/user/RedisClient-$a] ConnectionClosed PeerClosed
+[INFO] [11/19/2023 12:15:10.813] [default-rediscala.rediscala-client-worker-dispatcher-14] [akka://default/user/RedisClient-$a] Trying to reconnect in 2 seconds
+[INFO] [11/19/2023 12:15:12.828] [default-rediscala.rediscala-client-worker-dispatcher-17] [akka://default/user/RedisClient-$a] Connect to redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com/172.31.41.216:6379
+[INFO] [11/19/2023 12:15:12.834] [default-rediscala.rediscala-client-worker-dispatcher-17] [akka://default/user/RedisClient-$a] Connected to redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com/172.31.92.109:6379
+[error] redis.actors.InvalidRedisReply$: Could not decode the redis reply (Connection closed)
+[error]         at redis.actors.InvalidRedisReply$.<clinit>(RedisReplyDecoder.scala)
+[error]         at redis.actors.RedisReplyDecoder.$anonfun$postStop$1(RedisReplyDecoder.scala:20)
+[error]         at scala.collection.LinearSeqOptimized.foreach(LinearSeqOptimized.scala:75)
+[error]         at scala.collection.LinearSeqOptimized.foreach$(LinearSeqOptimized.scala:72)
+[error]         at scala.collection.mutable.MutableList.foreach(MutableList.scala:33)
+[error]         at redis.actors.RedisReplyDecoder.postStop(RedisReplyDecoder.scala:19)
+[error]         at akka.actor.Actor.aroundPostStop(Actor.scala:558)
+[error]         at akka.actor.Actor.aroundPostStop$(Actor.scala:558)
+[error]         at redis.actors.RedisReplyDecoder.aroundPostStop(RedisReplyDecoder.scala:11)
+[error]         at akka.actor.dungeon.FaultHandling.finishTerminate(FaultHandling.scala:215)
+[error]         at akka.actor.dungeon.FaultHandling.terminate(FaultHandling.scala:173)
+[error]         at akka.actor.dungeon.FaultHandling.terminate$(FaultHandling.scala:143)
+[error]         at akka.actor.ActorCell.terminate(ActorCell.scala:447)
+[error]         at akka.actor.ActorCell.invokeAll$1(ActorCell.scala:553)
+[error]         at akka.actor.ActorCell.systemInvoke(ActorCell.scala:569)
+[error]         at akka.dispatch.Mailbox.processAllSystemMessages(Mailbox.scala:293)
+[error]         at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:271)
+[error]         at akka.dispatch.Mailbox.run(Mailbox.scala:229)
+[error]         at akka.dispatch.Mailbox.exec(Mailbox.scala:241)
+[error]         at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+[error]         at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+[error]         at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+[error]         at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+[error] stack trace is suppressed; run last Compile / run for the full output
+[error] (Compile / run) redis.actors.InvalidRedisReply$: Could not decode the redis reply (Connection closed)
+[error] Total time: 122 s (02:02), completed Nov 19, 2023, 12:15:30 PM
 
-Batch: 3159
-[WARN] [11/18/2023 19:12:06.232] [default-rediscala.rediscala-client-worker-dispatcher-8] [akka://default/user/RedisClient-$a] ConnectionClosed PeerClosed
-[INFO] [11/18/2023 19:12:06.233] [default-rediscala.rediscala-client-worker-dispatcher-8] [akka://default/user/RedisClient-$a] Trying to reconnect in 2 seconds
-Batch: 3160
-[INFO] [11/18/2023 19:12:08.253] [default-rediscala.rediscala-client-worker-dispatcher-9] [akka://default/user/RedisClient-$a] Connect to redis-test-2-ro.8grenv.ng.0001.use1.cache.amazonaws.com/172.31.92.109:6379
-[error] java.util.concurrent.TimeoutException: Futures timed out after [5 seconds]
+
